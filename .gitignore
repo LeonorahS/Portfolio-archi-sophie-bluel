@@ -1,1 +1,10 @@
-.idea
+
+#dossiers Vs code et IDE
+.idea 
+# Node
+node_modules/
+#environnement
+.env
+
+database.sqlite
+.vs/code
