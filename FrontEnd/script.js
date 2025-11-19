@@ -1,7 +1,7 @@
 
 const gallery = document.querySelector('.gallery');
 let works = [];
-
+let categories = [];
 
 async function fetchGalery(){
 try {
@@ -12,8 +12,6 @@ try {
     
     displayGalery();
 
-   
-    
     // EN CAS D'ERREUR DE CONNEXION ,ON AFFICHE L'ERREUR DANS LA CONSOLE
 } catch (error) {
     console.error('Error fetching gallery:', error);
@@ -27,7 +25,6 @@ async function displayGalery(categorieId=null) {
         if (categorieId && work.categoryId !== categorieId) {   
             return;
         }
-
         const figure = document.createElement('figure');
         const img = document.createElement('img');
         const figcaption = document.createElement('figcaption');
@@ -44,6 +41,38 @@ async function displayGalery(categorieId=null) {
 }
 
 
+async function fetchcategories(){
+    const response = await fetch('http://localhost:5678/api/categories');
+    categories = await response.json();
+    displayCategories();
+}     
+
+async function displayCategories(){
+    const categoriesContainer = document.querySelector('.categories');//selection de la div categories
+   
+    categoriesContainer.innerHTML = '';
+   const allButton = document.createElement('button');
+   allButton.textContent = 'Tous'; 
+   categoriesContainer.appendChild(allButton);  
+    allButton.addEventListener('click', () => {
+        displayGalery();
+    });
+    
+    categories.forEach(category => {
+        const button = document.createElement('button');
+        button.textContent = category.name; 
+        categoriesContainer.appendChild(button);
+        button.addEventListener('click', () => {    
+            displayGalery(category.id);
+        });
+    });
+}
+
+
+
 
 fetchGalery();
+
+fetchcategories();
+    
 
