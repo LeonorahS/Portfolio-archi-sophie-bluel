@@ -14,6 +14,8 @@ app.use(helmet({
       crossOriginResourcePolicy: false,
     }));
 app.use('/images', express.static(path.join(__dirname, 'images')))
+app.use(express.static(path.join(__dirname, 'FrontEnd')));
+
 
 const db = require("./models");
 const userRoutes = require('./routes/user.routes');
