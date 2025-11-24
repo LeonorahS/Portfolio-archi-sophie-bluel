@@ -75,4 +75,31 @@ fetchGalery();
 
 fetchcategories();
     
+// Vérifie si un token est présent => utilisateur connecté
+const token = localStorage.getItem('token');
+
+if (token) {
+    // Affiche le bandeau admin
+    const adminBar = document.getElementById('admin-bar');
+    if (adminBar) adminBar.style.display = 'flex';
+
+    // Change "login" en "logout"
+    const loginLink = document.querySelector('.login-link');
+    if (loginLink) {
+        loginLink.textContent = 'logout';
+        loginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('token');
+            window.location.reload();
+        });
+    }
+
+    // Masquer les filtres
+    const categoriesContainer = document.querySelector('.categories');
+    if (categoriesContainer) categoriesContainer.style.display = 'none';
+
+    // Affiche les boutons de modification
+    const editButtons = document.querySelectorAll('.js-edit-mode');
+    editButtons.forEach(btn => btn.style.display = 'inline');
+}
 
