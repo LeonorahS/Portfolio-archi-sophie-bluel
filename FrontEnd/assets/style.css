@@ -53,6 +53,26 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
+/*barre admin style*/
+.admin-bar {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Work Sans', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+  .fa-pen-to-square {
+	margin-right: 10px;
+	font-size: 14px;
+	color: white;
+  }
+
 header {
 	display: flex;
 	justify-content: space-between;
