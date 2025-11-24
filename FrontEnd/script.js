@@ -92,41 +92,47 @@ function AdminMode() {
         });
     }
     //recuperer les elments du dom pour la modal
-    const modal= document.getElementById('modal');
-    const editBtn = document.querySelector('.js-edit-mode');
-    const closeModalBtn = document.getElementById('close-modal');
-    const overlay = document.getElementById('modal');
-    const openFormBtn = document.getElementById('open-form-btn');
-    const modalGallery = document.getElementById('modal-gallery');
-    const modalForm = document.getElementById('modal-form');
-    const backArrow = document.getElementById('back-arrow');
-    //ouvrir la modal
-    editBtn.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        modalGallery.classList.add('active');
-        modalForm.classList.remove('active');
-    });
-    //fermer la modal
-    closeModalBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-    //fermer la modal en cliquant en dehors overlay
-    overlay.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }           
-    });
+    
+const modal = document.getElementById("modal");
+const editBtn = document.querySelector(".js-edit-mode");
+const closeModalBtn = document.querySelector(".close-modal");
+const overlay = document.getElementById("modal");
+const openFormBtn = document.querySelector(".open-form-btn");
+const modalGallery = document.querySelector(".modal-gallery");
+const modalForm = document.querySelector(".modal-form");
+const backArrow = document.querySelector(".back-arrow");
 
-    //aller au formulaire d'ajout
-    openFormBtn.addEventListener('click', () => {
-        modalGallery.classList.remove('active');
-        modalForm.classList.add('active');
-    });
-    //retour a la galerie depuis le formulaire
-    backArrow.addEventListener('click', () => {
-        modalGallery.classList.add('active');
-        modalForm.classList.remove('active');
-    }); 
+// Ouvrir la modale
+editBtn.addEventListener("click", () => {
+  modal.style.display = "flex";
+  modalGallery.classList.add("active");
+  modalForm.classList.remove("active");
+});
+
+// Fermer modale (croix)
+closeModalBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+//  Fermer modale (clic sur overlay)
+overlay.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+// Aller au formulaire
+openFormBtn.addEventListener("click", () => {
+  modalGallery.classList.remove("active");
+  modalForm.classList.add("active");
+});
+
+// Retour à la galerie
+backArrow.addEventListener("click", () => {
+  modalForm.classList.remove("active");
+  modalGallery.classList.add("active");
+});
+
 
 
 

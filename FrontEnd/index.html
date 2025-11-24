@@ -12,31 +12,28 @@
 
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
-<aside id="modal" class="modal" style="display: none;">
-	<div class="modal-content">
-		<span class="close-btn" id="close-modal">&times;</span>
-		<section class="modal-gallery active">
-			<h3>Galerie photo</h3>
-			<div class="gallery-container"></div>
-			<hr/>
-			<button class="modal-login-btn">Ajouter une photo</button>
-		</section>
-		<section class="modal-form">
-			<span class="back-arrow">&larr;</span>
-			<h3>Ajouter une photo</h3>
-			<form id="upload-form">
-				<label for="image-url">URL de l'image</label>
-				<input type="text" id="image-url" name="image-url" required>
-				<label for="caption">Légende</label>
-				<input type="text" id="caption" name="caption" required>
-				<label for="category">Catégorie</label>
-				<select id="category" name="category" required>
-					<option value="">Sélectionner une catégorie</option>
-				</select>
-				<input type="submit" value="Ajouter la photo">
-		</section>
-	</div>
+<aside id="modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+	
+    <section class="modal-gallery active">
+      <h3>Galerie photo</h3>
+      <div class="gallery-container"></div>
+      <hr />
+      <button class="open-form-btn" type="submit">Ajouter une photo</button>
+    </section>
+
+    <section class="modal-form">
+      <span class="back-arrow">&larr;</span>
+      <h3>Ajout photo</h3>
+      <form id="upload-form">
+        <!-- champs image, titre, catégorie -->
+        <input type="submit" value="Valider">
+      </form>
+    </section>
+  </div>
 </aside>
+
 
 <!--<div id="modal-Login" class="modal-login" style="display: none;">
 	<div class="modal">
