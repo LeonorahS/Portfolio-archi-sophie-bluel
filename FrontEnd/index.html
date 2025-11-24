@@ -12,6 +12,13 @@
 
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
+<div id="modal-Login" class="modal-login" style="display: none;">
+	<div class="modal">
+		<span class="close-btn" id="close-modal-login">&times;</span>
+		<p>Galerie photo</p>
+	</div>
+</div>
+
 <body>
 	<div id="admin-bar" class="admin-bar" style="display: none;">
 		<div admin-bar-content>
@@ -48,7 +55,10 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes projets <span class="js-edit-mode" style="display: none;">modifier</span></h2>
+		<h2>Mes projets <span class="js-edit-mode" style="display: inline;">
+    		<i class="fa-regular fa-pen-to-square"></i> modifier</span>
+		</h2>
+
 		<div class="categories">
 
 		</div>
@@ -114,19 +124,6 @@
 		</form>
 	</section>
 </main>
-
-<footer>
-	<nav>
-		<ul>
-			<li>Mentions Légales</li>
-		</ul>
-	</nav>
-</footer>
-<script src="script.js" defer></script>
-</body>
-</html>
-
-
 <footer>
 	<nav>
 		<ul>
