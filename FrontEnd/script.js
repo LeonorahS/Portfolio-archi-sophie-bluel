@@ -91,6 +91,61 @@ function AdminMode() {
             btn.style.display = 'inline';
         });
     }
+    //recuperer les elments du dom pour la modal
+    const modal= document.getElementById('modal');
+    const editBtn = document.querySelector('.js-edit-mode');
+    const closeModalBtn = document.getElementById('close-modal');
+    const overlay = document.getElementById('modal');
+    const openFormBtn = document.getElementById('open-form-btn');
+    const modalGallery = document.getElementById('modal-gallery');
+    const modalForm = document.getElementById('modal-form');
+    const backArrow = document.getElementById('back-arrow');
+    //ouvrir la modal
+    editBtn.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalGallery.classList.add('active');
+        modalForm.classList.remove('active');
+    });
+    //fermer la modal
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+    //fermer la modal en cliquant en dehors overlay
+    overlay.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }           
+    });
+
+    //aller au formulaire d'ajout
+    openFormBtn.addEventListener('click', () => {
+        modalGallery.classList.remove('active');
+        modalForm.classList.add('active');
+    });
+    //retour a la galerie depuis le formulaire
+    backArrow.addEventListener('click', () => {
+        modalGallery.classList.add('active');
+        modalForm.classList.remove('active');
+    }); 
+
+
+
+
+    //const modalLogin = document.getElementById('modal-Login');
+    //const editBtn = document.querySelector('.js-edit-mode');
+    //const closeModalBtn = document.getElementById('close-modal-login');
+
+    //editBtn.addEventListener('click', () => {
+     //   modalLogin.style.display = 'flex';
+    //});
+    //closeModalBtn.addEventListener('click', () => {
+     //   modalLogin.style.display = 'none';
+    //});
+    //modalLogin.addEventListener('click', (e) => {
+     //   if (e.target === modalLogin) {
+     //       modalLogin.style.display = 'none';
+     //   }           
+    //});
 }
 
 
