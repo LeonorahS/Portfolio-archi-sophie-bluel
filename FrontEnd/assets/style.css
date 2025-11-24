@@ -59,16 +59,21 @@ body {
   background-color: black;
   color: white;
   padding: 10px;
-  text-align: center;
   font-family: 'Work Sans', sans-serif;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   font-size: 14px;
 }
+.admin-bar-content {
+  display: flex;	
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
 
-  .fa-pen-to-square {
-	margin-right: 10px;
+  .fa-regular fa-pen-to-square {
+	
 	font-size: 14px;
 	color: white;
   }
