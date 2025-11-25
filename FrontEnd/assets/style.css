@@ -422,7 +422,17 @@ flex-direction: column;
 	background-color: #14483f;
 }*/
 
-
+.delete-btn {
+	position: absolute;
+	background-color: #B1663C;
+ 	border: none;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 14px;
+}
 
 
 
