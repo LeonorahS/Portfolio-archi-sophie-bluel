@@ -93,73 +93,79 @@ function AdminMode() {
     }
     //recuperer les elments du dom pour la modal
     
-const modal = document.getElementById("modal");
-const editBtn = document.querySelector(".js-edit-mode");
-const closeModalBtn = document.querySelector(".close-modal");
-const overlay = document.getElementById("modal");
-const openFormBtn = document.querySelector(".open-form-btn");
-const modalGallery = document.querySelector(".modal-gallery");
-const modalForm = document.querySelector(".modal-form");
-const backArrow = document.querySelector(".back-arrow");
+    const modal = document.getElementById("modal");
+    const editBtn = document.querySelector(".js-edit-mode");
+    const closeModalBtn = document.querySelector(".close-modal");
+    const overlay = document.getElementById("modal");
+    const openFormBtn = document.querySelector(".open-form-btn");
+    const modalGallery = document.querySelector(".modal-gallery");
+    const modalForm = document.querySelector(".modal-form");
+    const backArrow = document.querySelector(".back-arrow");
 
-// Ouvrir la modale
-editBtn.addEventListener("click", () => {
-  modal.style.display = "flex";
-  modalGallery.classList.add("active");
-  modalForm.classList.remove("active");
-});
+    // Ouvrir la modale
+    editBtn.addEventListener("click", () => {
+    modal.style.display = "flex";
+    modalGallery.classList.add("active");
+    modalForm.classList.remove("active");
+    });
 
-// Fermer modale (croix)
-closeModalBtn.addEventListener("click", () => {
-  modal.style.display = "none";
-});
-
-//  Fermer modale (clic sur overlay)
-overlay.addEventListener("click", (e) => {
-  if (e.target === modal) {
+    // Fermer modale (croix)
+    closeModalBtn.addEventListener("click", () => {
     modal.style.display = "none";
-  }
-});
+    });
 
-// Aller au formulaire
-openFormBtn.addEventListener("click", () => {
-  modalGallery.classList.remove("active");
-  modalForm.classList.add("active");
-});
+    //  Fermer modale (clic sur overlay)
+    overlay.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+    });
 
-// Retour à la galerie
-backArrow.addEventListener("click", () => {
-  modalForm.classList.remove("active");
-  modalGallery.classList.add("active");
-});
+    // Aller au formulaire
+    openFormBtn.addEventListener("click", () => {
+    modalGallery.classList.remove("active");
+    modalForm.classList.add("active");
+    });
 
+    // Retour à la galerie
+    backArrow.addEventListener("click", () => {
+    modalForm.classList.remove("active");
+    modalGallery.classList.add("active");
+    });
 
-
-
-
-    //const modalLogin = document.getElementById('modal-Login');
-    //const editBtn = document.querySelector('.js-edit-mode');
-    //const closeModalBtn = document.getElementById('close-modal-login');
-
-    //editBtn.addEventListener('click', () => {
-     //   modalLogin.style.display = 'flex';
-    //});
-    //closeModalBtn.addEventListener('click', () => {
-     //   modalLogin.style.display = 'none';
-    //});
-    //modalLogin.addEventListener('click', (e) => {
-     //   if (e.target === modalLogin) {
-     //       modalLogin.style.display = 'none';
-     //   }           
-    //});
 }
+ function displayModalWorks() {
+        const modalGalleryContainer = document.querySelector('.gallery-container');
+        modalGalleryContainer.innerHTML = '';
+             console.log(works);
+        works.forEach(work => {
+        
+            const modalWork = document.createElement('div');
+            const img = document.createElement('img');
+            const btnDelete = document.createElement('button');
+            btnDelete.textContent = 'x';
+            //les liens depuis l'aplication backend
+            img.src = work.imageUrl;
+            img.alt = work.title;
+        
+            // TRANSFERT DES ELEMENTS VERS LA GALERIE
+            modalWork.appendChild(img);
+            modalWork.appendChild(btnDelete);
+            modalGalleryContainer.appendChild(modalWork);
 
+            
+    });
 
-fetchGalery();
+    } 
+   async function init(params) {
+    await fetchGalery();
+    await fetchcategories();
+    AdminMode();
+    displayModalWorks();
+   }
+   init();
 
-fetchcategories();
-AdminMode();
     
-// Vérifie si un token est présent => utilisateur connecté
+
 
 
