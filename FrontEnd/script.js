@@ -194,6 +194,21 @@ function loadImageForm() {//fonction pour le formulaire d'upload d'image
         const ImageInput = document.getElementById('image');
         const titleInput = document.getElementById('title');
         const categorySelect = document.getElementById('category');
+        const previewImage = document.getElementById('preview-image');  
+        
+            
+        ImageInput.addEventListener('change', () => {
+        const file = ImageInput.files[0];
+        if (file) {
+            const reader = new FileReader();        
+             reader.onload = (e) => {
+                previewImage.src = e.target.result;
+                previewImage.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+            }
+     });
+
 
         categories.forEach(category => {//remplir le select avec les categories
             const option = document.createElement('option');//
@@ -238,6 +253,8 @@ function loadImageForm() {//fonction pour le formulaire d'upload d'image
         } catch (error) {//gestion des erreurs
             console.error('Error uploading picture:', error);   //afficher l'erreur dans la console
         }
+           
+
         });    
     }   
 
@@ -248,9 +265,13 @@ function loadImageForm() {//fonction pour le formulaire d'upload d'image
     await fetchcategories();
     AdminMode();
     displayModalWorks();
-    loadImageForm
+    loadImageForm();
+    
    }
    init();
+   
+  
+
 
     
 

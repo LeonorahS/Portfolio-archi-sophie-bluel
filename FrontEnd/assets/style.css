@@ -434,10 +434,6 @@ flex-direction: column;
 	font-size: 14px;
 }
 
-
-
-
-
 .contact {
 	width: 50%;
 	margin: auto;
@@ -487,5 +483,20 @@ footer nav ul {
 	margin: 2em;
 }
 
+
+.image-preview {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 5px;
+  object-fit: cover;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
 

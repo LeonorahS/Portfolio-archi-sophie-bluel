@@ -23,33 +23,41 @@
       <button class="open-form-btn" type="submit">Ajouter une photo</button>
     </section>
 
-    <section class="modal-form">
-      <span class="back-arrow">&larr;</span>
-      <h3>Ajout photo</h3>
-      <form id="upload-form">
+   <section class="modal-form">
+  <span class="back-arrow">&larr;</span>
+  <h3>Ajout photo</h3>
+  <form id="upload-form">
 
-        <!-- champs image, titre, catégorie -->
-		 <div class="form-group">
-			<label for="image">image</label>
-			<input type="file" id="image" name="image" accept="image/*" required>
-		</div>
-		<div class="form-group">
-			<label for="title">titre</label>
-			<input type="text" id="title" name="title" required>
-		 </div>
-		 <div class="form-group">
-			<label for="category">catégorie</label>
-			<select id="category" name="category" required>
-				<option value="" disabled selected>Choisir une catégorie</option>
-				<option value="1">Objets</option>
-				<option value="2">Appartements</option>
-				<option value="3">Restaurants</option>
-				<option value="4">Hôtels &amp; Villas</option>
-			</select>
-		 </div>
-        <input type="submit" value="Valider">
-      </form>
-    </section>
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+    </div>
+
+    <!-- Aperçu image ici -->
+    <div class="image-preview">
+      <img id="preview-image" style="display: none; width: 100%; max-height: 200px; object-fit: cover; border-radius: 5px;" />
+    </div>
+
+    <div class="form-group">
+      <label for="title">Titre</label>
+      <input type="text" id="title" name="title" required>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Catégorie</label>
+      <select id="category" name="category" required>
+        <option value="" disabled selected>Choisir une catégorie</option>
+        <option value="1">Objets</option>
+        <option value="2">Appartements</option>
+        <option value="3">Restaurants</option>
+        <option value="4">Hôtels &amp; Villas</option>
+      </select>
+    </div>
+
+    <input type="submit" value="Valider">
+  </form>
+</section>
+
   </div>
 </aside>
 
