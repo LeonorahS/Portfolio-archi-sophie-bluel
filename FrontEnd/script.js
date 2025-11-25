@@ -152,16 +152,69 @@ function AdminMode() {
             modalWork.appendChild(img);
             modalWork.appendChild(btnDelete);
             modalGalleryContainer.appendChild(modalWork);
-
             
     });
 
+function loadImageForm() {//fonction pour le formulaire d'upload d'image
+        const form = document.getElementById('upload-form');//selection du formulaire
+        const ImageInput = document.getElementById('image');
+        const titleInput = document.getElementById('title');
+        const categorySelect = document.getElementById('category');
+
+        categories.forEach(category => {//remplir le select avec les categories
+            const option = document.createElement('option');//
+            option.value = category.id;//valeur de l'option
+            option.textContent = category.name;//
+            categorySelect.appendChild(option);//ajouter l'option au select
+        });
+    
+        form.addEventListener('submit', async (e) => {//
+            e.preventDefault();//
+
+            const image = ImageInput.files[0];//
+            const title = titleInput.value;
+            const categoryId = categorySelect.value;
+        /*     const token = localStorage.getItem('token'); */
+        if (!image || !title || !categoryId) {//validation des champs
+            alert('Please fill in all the fields.');//
+            return;//arreter l'execution si les champs ne sont pas remplis
+        }
+
+        const formData = new FormData();//creation d'un objet FormData pour envoyer les donnees
+        formData.append('image', image);//ajouter l'image
+        formData.append('title', title);//ajouter le titre
+        formData.append('category', categoryId);//ajouter la categorie
+        try {
+            const response = await fetch('http://localhost:5678/api/works', {//envoyer les donnees au backend
+                method: 'POST',//methode POST pour creer une nouvelle ressource
+                headers: {      //entete de la requete
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`//token d'authentification
+                },
+                body: formData//    
+            });     
+            if (response.ok) {//verifier si la reponse est OK
+                const newWork = await response.json();//recuperer le nouveau travail cree
+                works.push(newWork);//ajouter le nouveau travail au tableau des travaux
+                displayGalery();//mettre a jour la galerie principale
+                displayModalWorks();//metre a jour la galerie de la modale
+                alert('picture uploaded successfully!');//alerter l'utilisateur
+            }   else {//si la reponse n'est pas OK
+                alert('Failed to upload picture.');//alerter l'utilisateur
+            }   
+        } catch (error) {//gestion des erreurs
+            console.error('Error uploading picture:', error);   //afficher l'erreur dans la console
+        }
+        });    
+    }   
+
+
     } 
-   async function init(params) {
+   async function init(params) {//fonction d'initialisation
     await fetchGalery();
     await fetchcategories();
     AdminMode();
     displayModalWorks();
+    loadImageForm
    }
    init();
 
