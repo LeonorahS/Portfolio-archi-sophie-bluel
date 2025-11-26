@@ -186,7 +186,67 @@ function AdminMode() {
            // modalWork.appendChild(img);
            // modalWork.appendChild(btnDelete);
            // modalGalleryContainer.appendChild(modalWork);
-            
+ 
+function addWorkToMainGallery(work) {
+    const figure = document.createElement('figure');
+    const img = document.createElement('img');
+    const figcaption = document.createElement('figcaption');
+
+    img.src = work.imageUrl;
+    img.alt = work.title;
+    figcaption.textContent = work.title;
+
+    figure.appendChild(img);
+    figure.appendChild(figcaption);
+
+    gallery.appendChild(figure);
+}
+function addWorkToModalGallery(work) {
+    const modalGalleryContainer = document.querySelector('.gallery-container');
+    
+    const modalWork = document.createElement('div');
+    const img = document.createElement('img');
+    const btnDelete = document.createElement('button');
+
+    img.src = work.imageUrl;
+    img.alt = work.title;
+    btnDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+    btnDelete.classList.add('delete-btn');
+
+    // Optionnel : Tu peux gérer la suppression ici aussi si tu veux
+    btnDelete.addEventListener('click', async () => {
+        const confirmDelete = confirm('Are you sure you want to delete this work?');
+        if (!confirmDelete) return;
+
+        const token = localStorage.getItem('token');
+        try {
+            const response = await fetch(`http://localhost:5678/api/works/${work.id}`, {
+                method: 'DELETE',
+                headers: {  
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                modalWork.remove();
+                works = works.filter(w => w.id !== work.id);
+                displayGalery();
+            } else {
+                alert('Failed to delete work.');
+            }
+
+        } catch (error) {
+            console.error('Error deleting work:', error);
+            alert('Erreur serveur.');
+        }
+    });
+
+    modalWork.appendChild(img);
+    modalWork.appendChild(btnDelete);
+    modalGalleryContainer.appendChild(modalWork);
+}
+           
+
     
 
 function loadImageForm() {//fonction pour le formulaire d'upload d'image
@@ -250,6 +310,12 @@ function loadImageForm() {//fonction pour le formulaire d'upload d'image
             if (response.ok) {//verifier si la reponse est OK
                 const newWork = await response.json();//recuperer le nouveau travail cree
                 works.push(newWork);//ajouter le nouveau travail au tableau des travaux
+                //  Pour ajouter l’image à la galerie principale
+                addWorkToMainGallery(newWork);
+
+                //  Pour ajouter l’image à la modale
+                addWorkToModalGallery(newWork);
+
                 displayGalery();//mettre a jour la galerie principale
                 displayModalWorks();//metre a jour la galerie de la modale
                 alert('picture uploaded successfully!');//alerter l'utilisateur
