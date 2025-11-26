@@ -191,22 +191,28 @@ function AdminMode() {
 
 function loadImageForm() {//fonction pour le formulaire d'upload d'image
         const form = document.getElementById('upload-form');//selection du formulaire
-        const ImageInput = document.getElementById('image');
+    
         const titleInput = document.getElementById('title');
         const categorySelect = document.getElementById('category');
+        const imageUploadBox = document.getElementById('image-upload-box');
         const previewImage = document.getElementById('preview-image');  
+        const ImageInput = document.getElementById('image');
         
             
         ImageInput.addEventListener('change', () => {
         const file = ImageInput.files[0];
         if (file) {
-            const reader = new FileReader();        
-             reader.onload = (e) => {
-                previewImage.src = e.target.result;
-                previewImage.style.display = 'block';
-            }
+            const reader = new FileReader();
+            reader.onload = (e) => {
+            previewImage.src = e.target.result;
+            previewImage.style.display = 'block';
+
+            // Cacher icône et texte
+            imageUploadBox.querySelector('i').style.display = 'none';
+            imageUploadBox.querySelectorAll('p').forEach(p => p.style.display = 'none');
+            };
             reader.readAsDataURL(file);
-            }
+        }
      });
 
 

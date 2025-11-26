@@ -484,19 +484,54 @@ footer nav ul {
 }
 
 
-.image-preview {
-  margin-top: 10px;
+.image-upload-group {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
-.image-preview img {
-  max-width: 100%;
-  max-height: 200px;
+.image-upload-label {
+  width: 100%;
+  cursor: pointer;
+}
+
+.image-upload-box {
+  background-color: #e8f1f6;
   border-radius: 5px;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-upload-box i {
+  color: #b9c5cc;
+  margin-bottom: 10px;
+  font-size: 48px;
+}
+
+.image-upload-box p {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.image-note {
+  font-size: 12px;
+  color: #888;
+}
+
+.image-upload-box img {
+  max-height: 100%;
+  max-width: 100%;
   object-fit: cover;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 auto;
 }
 
 
