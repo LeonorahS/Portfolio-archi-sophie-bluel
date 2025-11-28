@@ -318,6 +318,8 @@ function loadImageForm() {//fonction pour le formulaire d'upload d'image
 
                 displayGalery();//mettre a jour la galerie principale
                 displayModalWorks();//metre a jour la galerie de la modale
+                resetForm(); //reset le formulaire
+
                 alert('picture uploaded successfully!');//alerter l'utilisateur
             }   else {//si la reponse n'est pas OK
                 alert('Failed to upload picture.');//alerter l'utilisateur
@@ -326,8 +328,34 @@ function loadImageForm() {//fonction pour le formulaire d'upload d'image
             console.error('Error uploading picture:', error);   //afficher l'erreur dans la console
         }
            
+            function resetForm() {
+            const form = document.getElementById('upload-form');
+            const titleInput = document.getElementById('title');
+            const categorySelect = document.getElementById('category');
+            const previewImage = document.getElementById('preview-image');
+            const imageUploadBox = document.getElementById('image-upload-box');
+            const imageInput = document.getElementById('image');
 
-        });    
+            // Réinitialiser les champs
+            titleInput.value = '';
+            categorySelect.selectedIndex = 0;
+            imageInput.value = '';
+
+            // Réinitialiser l'aperçu de l'image
+            previewImage.src = '';
+            previewImage.style.display = 'none';
+
+            // Réafficher l'icône et les textes dans le bloc image
+            imageUploadBox.querySelector('i').style.display = 'block';
+            imageUploadBox.querySelectorAll('p').forEach(p => p.style.display = 'block');
+        }
+
+        });   
+        
+    
+
+
+
     }   
 
 
