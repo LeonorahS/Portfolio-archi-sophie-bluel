@@ -53,6 +53,7 @@ async function displayCategories(){
     categoriesContainer.innerHTML = '';
    const allButton = document.createElement('button');
    allButton.textContent = 'Tous'; 
+   allButton.classList.add('filter-btn');
    categoriesContainer.appendChild(allButton);  
     allButton.addEventListener('click', () => {
         displayGalery();
@@ -61,6 +62,7 @@ async function displayCategories(){
     categories.forEach(category => {
         const button = document.createElement('button');
         button.textContent = category.name; 
+        button.classList.add('filter-btn');
         categoriesContainer.appendChild(button);
         button.addEventListener('click', () => {    
             displayGalery(category.id);
