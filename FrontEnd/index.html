@@ -29,12 +29,12 @@
 	<form id="upload-form">
 
 		<div class="form-group">
-		<label for="image">Image</label>
+		<label for="image"></label>
 		<div id="image-upload-box" class="image-upload-box">
 			<i class="fa-regular fa-image"></i>
-			<p>+ Ajouter photo</p>
-			<p class="image-note">jpg, png : 4mo max</p>
-			<img id="preview-image" style="display: none;" />
+			<button type="button" class="upload-btn">+ Ajouter photo</button>
+  		<p class="upload-note">jpg, png : 4mo max</p>
+			<img id="preview-image" src="" alt="preview" style="display: none;" />
 			<input type="file" id="image" name="image" accept="image/*" required style="opacity:0; position:absolute; top:0; left:0; width:100%; height:100%; cursor:pointer;">
 		</div>
 		</div>
@@ -46,7 +46,7 @@
 		<div class="form-group filters-group">
 		<label for="category">Catégorie</label>
 		<select id="category" name="category" required>
-			<option value="" disabled selected>Choisir une catégorie</option>
+			<option value="" disabled selected></option>
 			<option value="1">Objets</option>
 			<option value="2">Appartements</option>
 			<option value="3">Restaurants</option>
