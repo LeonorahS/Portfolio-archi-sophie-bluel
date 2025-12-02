@@ -507,6 +507,9 @@ input[type="submit"]:not(:disabled) {
 	
 }
 
+.modal-form{
+	width: 100%;
+}
 
 #category {
 	height: 50px;		
