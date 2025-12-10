@@ -28,8 +28,10 @@
 	<h3>Ajout photo</h3>
 	<form id="upload-form">
 
+
+
 		<div class="form-group">
-		<label for="image"></label>
+		<label for="image" class="image-upload-label" ></label>
 		<div id="image-upload-box" class="image-upload-box">
 			<i class="fa-regular fa-image"></i>
 			<button type="button" class="upload-btn">+ Ajouter photo</button>
@@ -37,6 +39,7 @@
 			<img id="preview-image" src="" alt="preview" style="display: none;" />
 			<input type="file" id="image" name="image" accept="image/*" required style="opacity:0; position:absolute; top:0; left:0; width:100%; height:100%; cursor:pointer;">
 		</div>
+	
 		</div>
 		<div class="form-group">
 			<label for="title">Titre</label>
@@ -54,7 +57,7 @@
 		</select>
 		</div>
 	<hr class="modal-sep">
-    <input type="submit" value="Valider">
+    <input type="submit" id="upload-btn"  value="Valider">
   </form>
 </section>
 

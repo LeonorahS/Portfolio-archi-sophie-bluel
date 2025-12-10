@@ -162,9 +162,7 @@ header {
 	padding: 0 20px;
 	margin: 50px auto;
 }
-section {
-	margin: 50px 0;
-}
+
 
 h1{
 	display: flex;
@@ -260,7 +258,17 @@ nav li a {
 .js-edit-mode i {
 	font-size: 14px;
 }
+.gallery {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+}
 
+.gallery img {
+	width: 100%;
+}
 /*-----------------------------------modal style-----------------------------------*/
 
 #modal.modal{
@@ -278,7 +286,7 @@ nav li a {
 
 .modal-content{
  background-color: white;
-  padding: 24px;
+  
   position: relative;
   width: 430px; 
   max-width: 90%;
@@ -307,12 +315,6 @@ nav li a {
 	top: 10px;
 	left: 15px;
 }
-.modal-form {
-	display: none;
-}
-.modal-form.active {
-	display: block;
-}
 
 /**************************************************gallery modal style******************************************/
 
@@ -327,7 +329,8 @@ nav li a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 20px;
+	gap: ;
+	padding: 40px;
 	text-align: center;
 }
 
@@ -348,9 +351,9 @@ nav li a {
 	gap: 10px;
 }
 
-.gallery-container hr{
-	margin: 50px 0;
-	color:#B3B3B3
+.modal-gallery.active hr{
+	margin-top:60px;
+	color:#B3B3B3;
 }
 
 .gallery-container div{
@@ -393,17 +396,7 @@ nav li a {
 	background-color: #144940;
 }
 
-.gallery {
-	width: 100%;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
-}
 
-.gallery img {
-	width: 100%;
-}
 /**************************************************form modal style******************************************/
 .modal-form{
 	display: flex;
@@ -413,13 +406,14 @@ nav li a {
 }
 
 .modal-form form {
-	width: 90%;
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
-	margin-top:30px;
+	gap: 5px;
+	
 	text-align: left;
 }
+
+
 
 .back-arrow{
 	cursor: pointer;
@@ -518,8 +512,8 @@ nav li a {
   border-radius: 5px;
 }
 
-input[type="submit"] {
-  background-color: #1d6154;
+#btn-upload {
+  background-color: #A7A7A7;
   color: white;
   border: none;
   padding: 12px 40px;
@@ -530,24 +524,23 @@ input[type="submit"] {
   margin-top: 10px;
 }
 
-input[type="file"] {
+
+.image-upload-label input[type="file"] {
+  opacity: 0;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
-  opacity: 0;
+  width: 100%;
   cursor: pointer;
   z-index: 2;
 }
-
-
-input[type="submit"]:disabled {
-  background-color: #A7A7A7;
+input #btn-upload:disabled {
+  background-color:#1D6154;
   cursor: not-allowed;
 }
-input[type="submit"]:not(:disabled) {
-  background-color: #1D6154;
+#btn-upload:not(:disabled) {
+  background-color:#A7A7A7;
   cursor: pointer;
 }
 
