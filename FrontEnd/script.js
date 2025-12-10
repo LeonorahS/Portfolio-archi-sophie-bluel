@@ -272,8 +272,14 @@ function loadImageForm() {//fonction pour le formulaire d'upload d'image
             // Cacher icône et texte
             imageUploadBox.querySelector('i').style.display = 'none';
             imageUploadBox.querySelectorAll('p').forEach(p => p.style.display = 'none');
+            imageUploadBox.classList.add('has-preview');
             };
             reader.readAsDataURL(file);
+        }
+        else{
+            previewImage.src = '';
+            previewImage.style.display = 'none';
+            imageUploadBox.classList.remove('has-preview');
         }
      });
 
@@ -337,6 +343,7 @@ function loadImageForm() {//fonction pour le formulaire d'upload d'image
             const previewImage = document.getElementById('preview-image');
             const imageUploadBox = document.getElementById('image-upload-box');
             const imageInput = document.getElementById('image');
+            imageUploadBox.classList.remove('has-preview');
 
             // Réinitialiser les champs
             titleInput.value = '';
