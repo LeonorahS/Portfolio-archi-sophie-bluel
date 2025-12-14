@@ -68,7 +68,10 @@ async function displayCategories(){
             displayGalery(category.id);
         });
     });
+
+    selectImage//
 }
+
 
 function AdminMode() {
     const token = localStorage.getItem('token');
@@ -215,7 +218,7 @@ function addWorkToModalGallery(work) {
     btnDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
     btnDelete.classList.add('delete-btn');
 
-    // Optionnel : Tu peux gérer la suppression ici aussi si tu veux
+    
     btnDelete.addEventListener('click', async () => {
         const confirmDelete = confirm('Are you sure you want to delete this work?');
         if (!confirmDelete) return;
@@ -294,13 +297,13 @@ function loadImageForm() {//fonction pour le formulaire d'upload d'image
         form.addEventListener('submit', async (e) => {//
             e.preventDefault();//
 
-            const image = ImageInput.files[0];//
+            const image = ImageInput.files[0];
             const title = titleInput.value;
             const categoryId = categorySelect.value;
         /*     const token = localStorage.getItem('token'); */
-        if (!image || !title || !categoryId) {//validation des champs
+        if (!image || !title || !categoryId) {/
             alert('Please fill in all the fields.');//
-            return;//arreter l'execution si les champs ne sont pas remplis
+            return;
         }
 
         const formData = new FormData();//creation d'un objet FormData pour envoyer les donnees
@@ -309,31 +312,31 @@ function loadImageForm() {//fonction pour le formulaire d'upload d'image
         formData.append('category', categoryId);//ajouter la categorie
         try {
             const response = await fetch('http://localhost:5678/api/works', {//envoyer les donnees au backend
-                method: 'POST',//methode POST pour creer une nouvelle ressource
-                headers: {      //entete de la requete
+                method: 'POST',
+                headers: {     
                     'Authorization': `Bearer ${localStorage.getItem('token')}`//token d'authentification
                 },
                 body: formData//    
             });     
-            if (response.ok) {//verifier si la reponse est OK
-                const newWork = await response.json();//recuperer le nouveau travail cree
+            if (response.ok) {
+                const newWork = await response.json();
                 works.push(newWork);//ajouter le nouveau travail au tableau des travaux
-                //  Pour ajouter l’image à la galerie principale
+             
                 addWorkToMainGallery(newWork);
 
                 //  Pour ajouter l’image à la modale
                 addWorkToModalGallery(newWork);
 
-                displayGalery();//mettre a jour la galerie principale
-                displayModalWorks();//metre a jour la galerie de la modale
-                resetForm(); //reset le formulaire
+                displayGalery();
+                displayModalWorks();
+                resetForm(); 
 
-                alert('picture uploaded successfully!');//alerter l'utilisateur
+                alert('picture uploaded successfully!');
             }   else {//si la reponse n'est pas OK
                 alert('Failed to upload picture.');//alerter l'utilisateur
             }   
         } catch (error) {//gestion des erreurs
-            console.error('Error uploading picture:', error);   //afficher l'erreur dans la console
+            console.error('Error uploading picture:', error);   
         }
            
             function resetForm() {
@@ -350,11 +353,11 @@ function loadImageForm() {//fonction pour le formulaire d'upload d'image
             categorySelect.selectedIndex = 0;
             imageInput.value = '';
 
-            // Réinitialiser l'aperçu de l'image
+        
             previewImage.src = '';
             previewImage.style.display = 'none';
 
-            // Réafficher l'icône et les textes dans le bloc image
+          
             imageUploadBox.querySelector('i').style.display = 'block';
             imageUploadBox.querySelectorAll('p').forEach(p => p.style.display = 'block');
         }
